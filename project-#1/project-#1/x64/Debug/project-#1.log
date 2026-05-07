@@ -1,3 +1,3 @@
 ﻿  project-#1.cpp
-F:\My Studies\course-#7\project-#1\project-#1\project-#1.cpp(41,26): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-  project-#1.vcxproj -> F:\My Studies\course-#7\project-#1\x64\Debug\project-#1.exe
+F:\My Studies\Repos\Shaimaa01\bank-system-cpp\project-#1\project-#1\project-#1.cpp(43,26): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  project-#1.vcxproj -> F:\My Studies\Repos\Shaimaa01\bank-system-cpp\project-#1\x64\Debug\project-#1.exe

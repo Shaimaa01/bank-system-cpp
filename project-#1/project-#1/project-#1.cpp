@@ -6,6 +6,8 @@
 using namespace std;
 
 const string ClientsFileName = "Clients.txt";
+const string UsersFileName = "Users.txt";
+
 void ShowMainMenu();
 void ShowTransctionMenuScreen();
 
@@ -696,9 +698,90 @@ void ShowMainMenu()
     PerformMainMenueOpetion((enMainMenueOptions)ReadMenuOption(7));
 }
 
+// Bank Extension 2  
+
+string ReadUserName()
+{
+    string UserName;
+    cout << "Enter UserName? ";
+    getline(cin, UserName);
+    return UserName;
+}
+
+string ReadUserPassword()
+{
+    string Password;
+    cout << "Enter Password? ";
+    getline(cin, Password);
+    return Password;
+}
+
+struct stUser
+{
+    string Name;
+    string Password;
+    string Permission;
+};
+
+stUser ConvertLineToUserStruct(string Line)
+{
+    vector <string> vUserDate = SplitString(Line , "#//#");
+    stUser UserDate;
+    UserDate.Name = vUserDate[0];
+    UserDate.Password = vUserDate[1];
+    UserDate.Permission = vUserDate[2];
+    return UserDate;
+}
+
+bool IsUserNameAndPasswordValid(string UserName , string UserPassword)
+{
+    fstream MyFile;
+
+    MyFile.open(UsersFileName, ios::in);
+
+    if (MyFile.is_open())
+    {
+        string Line;
+        stUser UserDate;
+
+        while (getline(MyFile, Line))
+        {
+            UserDate = ConvertLineToUserStruct(Line);
+            if (UserName == UserDate.Name && UserPassword == UserDate.Password)
+                return true;
+        }
+
+        MyFile.close();
+    }
+    return false;
+}
+
+void ShowLoginScreen()
+{
+    system("cls");
+    cout << "===================================================\n";
+    cout << "\t\tLogin Screen\n";
+    cout << "===================================================\n";
+
+    string UserName = ReadUserName();
+    string UserPassword = ReadUserPassword();
+    short LinesToDelet = 2;
+
+    while (!IsUserNameAndPasswordValid(UserName, UserPassword))
+    {
+        cout << "\033[" << LinesToDelet << "A\033[J";
+        cout << "Invalid Username/Password:\n";
+        UserName = ReadUserName();
+        UserPassword = ReadUserPassword();
+        LinesToDelet = 3;
+    }
+
+    ShowMainMenu();
+}
+
 int main()
 {
-    ShowMainMenu();
+    ShowLoginScreen();
     system("Pause>0");
     return 0;
 }
