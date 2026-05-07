@@ -10,6 +10,7 @@ const string UsersFileName = "Users.txt";
 
 void ShowMainMenu();
 void ShowTransctionMenuScreen();
+void ShowLoginScreen();
 
 struct stClient
 {
@@ -446,7 +447,7 @@ void ShowEndScreen()
     cout << "------------------------------------\n";
 }
 
-enum enMainMenueOptions { eListClients = 1, eAddNewClient = 2, eDeleteClient = 3, eUpdateClient = 4, eFindClient = 5, eShowTransactionsMenue = 6, eExit = 7 };
+enum enMainMenueOptions { eListClients = 1, eAddNewClient = 2, eDeleteClient = 3, eUpdateClient = 4, eFindClient = 5, eShowTransactionsMenue = 6, eManageUsers = 7 , eLogout = 8 };
 
 enum enTransactionsMenueOptions { eDeposit = 1, eWithdraw = 2 , eTotalBalances = 3 , eMainMenu = 4};
 
@@ -673,9 +674,9 @@ void PerformMainMenueOpetion(enMainMenueOptions MainMenuOption )
         system("cls");
         ShowTransctionMenuScreen();
         break;
-    case(enMainMenueOptions::eExit):
+    case(enMainMenueOptions::eLogout):
         system("cls");
-        ShowEndScreen();
+        ShowLoginScreen();
         break;
     }
 }
@@ -692,10 +693,11 @@ void ShowMainMenu()
     cout << "\t[4] Update Client Info.\n";
     cout << "\t[5] Find Client.\n";
     cout << "\t[6] Transactions.\n";
-    cout << "\t[7] Exit.\n";
+    cout << "\t[7] Manage Users.\n";
+    cout << "\t[8] Logout.\n";
     cout << "===================================================\n";
 
-    PerformMainMenueOpetion((enMainMenueOptions)ReadMenuOption(7));
+    PerformMainMenueOpetion((enMainMenueOptions)ReadMenuOption(8));
 }
 
 // Bank Extension 2  
@@ -704,7 +706,7 @@ string ReadUserName()
 {
     string UserName;
     cout << "Enter UserName? ";
-    getline(cin, UserName);
+    getline(cin >> ws, UserName);
     return UserName;
 }
 
