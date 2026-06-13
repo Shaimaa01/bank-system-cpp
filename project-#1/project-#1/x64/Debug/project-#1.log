@@ -1,3 +1,24 @@
 ﻿  project-#1.cpp
-F:\My Studies\Repos\Shaimaa01\bank-system-cpp\project-#1\project-#1\project-#1.cpp(88,26): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-  project-#1.vcxproj -> F:\My Studies\Repos\Shaimaa01\bank-system-cpp\project-#1\x64\Debug\project-#1.exe
+F:\My Studies\course-#11\Bank\project-#1\project-#1\clsString.h(38,19): warning C4267: 'return': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file '../../../../course-#11/Bank/project-#1/project-#1/project-#1.cpp')
+  
+F:\My Studies\course-#11\Bank\project-#1\project-#1\clsString.h(43,23): warning C4267: 'return': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file '../../../../course-#11/Bank/project-#1/project-#1/project-#1.cpp')
+  
+F:\My Studies\course-#11\Bank\project-#1\project-#1\clsString.h(53,24): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file '../../../../course-#11/Bank/project-#1/project-#1/project-#1.cpp')
+  
+F:\My Studies\course-#11\Bank\project-#1\project-#1\clsString.h(174,20): warning C4267: 'return': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file '../../../../course-#11/Bank/project-#1/project-#1/project-#1.cpp')
+  
+F:\My Studies\course-#11\Bank\project-#1\project-#1\clsString.h(285,24): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file '../../../../course-#11/Bank/project-#1/project-#1/project-#1.cpp')
+  
+F:\My Studies\course-#11\Bank\project-#1\project-#1\clsString.h(328,14): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file '../../../../course-#11/Bank/project-#1/project-#1/project-#1.cpp')
+  
+F:\My Studies\course-#11\Bank\project-#1\project-#1\clsBankClient.h(26,151): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  (compiling source file '../../../../course-#11/Bank/project-#1/project-#1/project-#1.cpp')
+  
+F:\My Studies\course-#11\Bank\project-#1\project-#1\project-#1.cpp(89,26): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  project-#1.vcxproj -> F:\My Studies\course-#11\Bank\project-#1\x64\Debug\project-#1.exe

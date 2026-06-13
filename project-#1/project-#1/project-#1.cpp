@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include "clsBankClient.h"
 using namespace std;
 
 const int PermShowList = 1;
@@ -1286,7 +1287,16 @@ void Login()
 
 int main()
 {
-    Login();
+    //Login();
+
+   clsBankClient Client1 =  clsBankClient::Find("A101");
+   Client1.Print();
+
+   clsBankClient Client2 = clsBankClient::Find("A101", "1234");
+   Client2.Print();
+
+   cout <<  endl << clsBankClient::IsClientExist("A101");
+
     system("Pause>0");
     return 0;
 }
