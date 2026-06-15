@@ -12,7 +12,7 @@ class clsBankClient :public clsPerson
 {
 private:
 
-	enum enMode {EmptyMode = 0 , UpdateMode = 1};
+	enum enMode {EmptyMode = 0 , UpdateMode = 1 , AddNewMode = 2};
 	enMode _Mode; 
 
 	string _PinCode;
@@ -116,6 +116,11 @@ private:
 	static clsBankClient _GetEmptyClientObject()
 	{
 		return clsBankClient(enMode::EmptyMode , " ", " ", " ", " ", " ", " " ,  0);
+	}
+
+	void _AddNew()
+	{
+		_AddDataLineToFile(_ConvertClientObjectToLine(*this));
 	}
 
 public:
@@ -230,7 +235,7 @@ public:
 		return _GetEmptyClientObject();
 	}
 
-	enum enSaveResults {svFailedEmptyObject = 0 , svSucceeded = 1};
+	enum enSaveResults {svFailedEmptyObject = 0 , svSucceeded = 1 , svFaildAccountNumberExists = 2};
 
 	enSaveResults Save()
 	{
@@ -238,12 +243,24 @@ public:
 		{
 		case(enMode::EmptyMode):
 			return enSaveResults::svFailedEmptyObject;
-			break;
 
 		case(enMode::UpdateMode):
 			_Update();
 			return enSaveResults::svSucceeded;
-			break;
+
+		case(enMode::AddNewMode):
+		{
+			if (IsClientExist(AccountNumber()))
+			{
+				return enSaveResults::svFaildAccountNumberExists;
+			}
+			else
+			{
+				_AddNew();
+				_Mode = enMode::UpdateMode;
+				return enSaveResults::svSucceeded;
+			}
+		}
 		}
 	}
 
@@ -252,6 +269,11 @@ public:
 		clsBankClient Client = Find(AccountNumber);
 
 		return !Client.IsEmpty();
+	}
+
+	static clsBankClient GetAddNewClientObject(string AccountNumber)
+	{
+		return clsBankClient(enMode::AddNewMode , " " , " " , " " , " " , AccountNumber , " " , 0);
 	}
 };
 
