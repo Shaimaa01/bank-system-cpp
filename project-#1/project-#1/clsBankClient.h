@@ -26,6 +26,93 @@ private:
 		return clsBankClient(enMode::UpdateMode , vClientData[0] , vClientData[1] , vClientData[2] , vClientData[3] , vClientData[4] , vClientData[5] , stod(vClientData[6]));
 	}
 
+	string _ConvertClientObjectToLine(clsBankClient Client, string Seperator = "#//#")
+	{
+		string stClientRecord = "";
+		stClientRecord += Client.FirstName + Seperator;
+		stClientRecord += Client.LastName + Seperator;
+		stClientRecord += Client.Email + Seperator;
+		stClientRecord += Client.Phone + Seperator;
+		stClientRecord += Client.AccountNumber() + Seperator;
+		stClientRecord += Client.PinCode + Seperator;
+		stClientRecord += to_string(Client.AccountBalance);
+
+		return stClientRecord;
+	}
+
+	vector <clsBankClient> _LoadClientsDataFromFile()
+	{
+		vector <clsBankClient> vClientsData;
+
+		fstream MyFile;
+		MyFile.open("Clients.txt", ios::in);
+
+		if (MyFile.is_open())
+		{
+			string Line;
+
+			while (getline(MyFile, Line))
+			{
+				clsBankClient Client = _ConvertLinetoClientObject(Line);
+				vClientsData.push_back(Client);
+			}
+
+			MyFile.close();
+		}
+
+		return vClientsData;
+	}
+
+	void _SaveClientsDataToFile(vector <clsBankClient>& vClients)
+	{
+		fstream MyFile;
+
+		MyFile.open("Clients.txt", ios::out);
+
+		string DataLine;
+
+		if (MyFile.is_open())
+		{
+			for (clsBankClient& C : vClients)
+			{
+				DataLine = _ConvertClientObjectToLine(C);
+				MyFile << DataLine << endl;
+			}
+
+			MyFile.close();
+		}
+	}
+
+	void _Update()
+	{
+		vector <clsBankClient> vClients = _LoadClientsDataFromFile();
+
+		for (clsBankClient& C : vClients)
+		{
+			if (C.AccountNumber() == AccountNumber())
+			{
+				C = *this;
+				break;
+			}
+		}
+
+		_SaveClientsDataToFile(vClients);
+	}
+
+	void _AddDataLineToFile(string stDataLine)
+	{
+		fstream MyFile;
+
+		MyFile.open("Clients.txt", ios::out | ios::app);
+
+		if (MyFile.is_open())
+		{
+			MyFile << stDataLine << endl;
+		}
+
+		MyFile.close();
+	}
+
 	static clsBankClient _GetEmptyClientObject()
 	{
 		return clsBankClient(enMode::EmptyMode , " ", " ", " ", " ", " ", " " ,  0);
@@ -141,6 +228,23 @@ public:
 		}
 
 		return _GetEmptyClientObject();
+	}
+
+	enum enSaveResults {svFailedEmptyObject = 0 , svSucceeded = 1};
+
+	enSaveResults Save()
+	{
+		switch (_Mode)
+		{
+		case(enMode::EmptyMode):
+			return enSaveResults::svFailedEmptyObject;
+			break;
+
+		case(enMode::UpdateMode):
+			_Update();
+			return enSaveResults::svSucceeded;
+			break;
+		}
 	}
 
 	static bool IsClientExist(string AccountNumber)
