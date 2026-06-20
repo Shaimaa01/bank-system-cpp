@@ -74,6 +74,19 @@ public:
 		return Number;
 	}
 
+	static short ReadshortNumberBetween(short From, short To, string ErrorMessage = "Number is not within range , Enter again\n")
+	{
+		short Number = ReadIntNumber();
+
+		while (!IsNumberBetween(Number, From, To))
+		{
+			cout << ErrorMessage;
+			Number = ReadIntNumber();
+		}
+
+		return Number;
+	}
+
 	static float ReadFloatNumber(string ErrorMessage = "Invalid Number , Enter again\n")
 	{
 		float Number;

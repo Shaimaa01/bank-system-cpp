@@ -18,6 +18,7 @@ private:
 	string _PinCode;
 	string _AccountNumber;
 	float _AccountBalance;
+	bool _MarkForDelete = false;
 
 	static clsBankClient _ConvertLinetoClientObject(string Line , string Seperator = "#//#")
 	{
@@ -40,7 +41,7 @@ private:
 		return stClientRecord;
 	}
 
-	vector <clsBankClient> _LoadClientsDataFromFile()
+	static vector <clsBankClient> _LoadClientsDataFromFile()
 	{
 		vector <clsBankClient> vClientsData;
 
@@ -75,8 +76,11 @@ private:
 		{
 			for (clsBankClient& C : vClients)
 			{
-				DataLine = _ConvertClientObjectToLine(C);
-				MyFile << DataLine << endl;
+				if (C.MarkForDelete() == false)
+				{
+					DataLine = _ConvertClientObjectToLine(C);
+					MyFile << DataLine << endl;
+				}
 			}
 
 			MyFile.close();
@@ -167,19 +171,9 @@ public:
 
 	__declspec(property(put = SetAccountBalance, get = GetAccountBalance)) float AccountBalance;
 
-	void Print()
+	bool MarkForDelete()
 	{
-		cout << "\nClient Card:";
-		cout << "\n___________________";
-		cout << "\nFirstName   : " << FirstName;
-		cout << "\nLastName    : " << LastName;
-		cout << "\nFull Name   : " << FullName();
-		cout << "\nEmail       : " << Email;
-		cout << "\nPhone       : " << Phone;
-		cout << "\nAcc. Number : " << _AccountNumber;
-		cout << "\nPassword    : " << _PinCode;
-		cout << "\nBalance     : " << _AccountBalance;
-		cout << "\n___________________\n";
+		return _MarkForDelete;
 	}
 
 	static clsBankClient Find(string AccountNumber)
@@ -275,5 +269,64 @@ public:
 	{
 		return clsBankClient(enMode::AddNewMode , " " , " " , " " , " " , AccountNumber , " " , 0);
 	}
+
+	bool Delete()
+	{
+		vector <clsBankClient> vClients = _LoadClientsDataFromFile();
+
+		for (clsBankClient& C : vClients)
+		{
+			if (C.AccountNumber() == AccountNumber())
+			{
+				C._MarkForDelete = true;
+				break;
+			}
+		}
+
+		_SaveClientsDataToFile(vClients);
+
+		*this = _GetEmptyClientObject();
+
+		return true;
+	}
+
+	static vector <clsBankClient> GetClientsList()
+	{
+		return _LoadClientsDataFromFile();
+	}
+
+	static double GetTotalBalances()
+	{
+		double TotalBalances = 0;
+
+		vector <clsBankClient> vClients = GetClientsList();
+
+		for (clsBankClient C : vClients)
+		{
+			TotalBalances += C.AccountBalance;
+		}
+
+		return TotalBalances;
+	}
+
+	void Deposit(double Amount)
+	{
+		_AccountBalance += Amount;
+		Save();
+	}
+
+	bool Withdraw(double Amount)
+	{
+		if (Amount > _AccountBalance)
+		{
+			return false;
+		}
+		else
+		{
+			_AccountBalance -= Amount;
+			Save();
+		}
+	}
+
 };
 
