@@ -29,6 +29,7 @@ F:\My Studies\course-#11\Bank\project-#1\project-#1\clsBankClient.h(326,23): war
 F:\My Studies\course-#11\Bank\project-#1\project-#1\clsTotalBalancesScreen.h(52,82): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   (compiling source file '../../../../course-#11/Bank/project-#1/project-#1/project-#1.cpp')
   
+F:\My Studies\course-#11\Bank\project-#1\project-#1\clsLoginScreen.h(45,1): warning C4715: 'clsLoginScreen::_Login': not all control paths return a value
 F:\My Studies\course-#11\Bank\project-#1\project-#1\clsBankClient.h(259,1): warning C4715: 'clsBankClient::Save': not all control paths return a value
 F:\My Studies\course-#11\Bank\project-#1\project-#1\clsBankClient.h(329,1): warning C4715: 'clsBankClient::Withdraw': not all control paths return a value
 F:\My Studies\course-#11\Bank\project-#1\project-#1\clsUser.h(268,1): warning C4715: 'clsUser::Save': not all control paths return a value

@@ -19,7 +19,6 @@ protected:
         }
         cout << "\n\t\t\t\t\t______________________________________\n\n";
 
-        cout << "\n\t\t\t\t\t______________________________________\n";
         cout << "\n\t\t\t\t\tUser: " << CurrentUser.UserName << "\n";
         cout << "\t\t\t\t\tDate: " << clsDate::DateToString(clsDate()) << "\n\n";
     }
