@@ -1009,6 +1009,24 @@ public:
 		return CompareDates(*this, Date2);
 	}
 
+	static string GetSystemTimeDataString()
+	{
+		time_t t = time(0);
+		tm* now = localtime(&t);
+
+		short Day, Month, Year, Hour, Minute, Seconds;
+
+		Day = now->tm_mday;
+		Month = now->tm_mon + 1;
+		Year = now->tm_year + 1900;
+		Hour = now->tm_hour;
+		Minute = now->tm_min;
+		Seconds = now->tm_sec;
+
+		return to_string(Day) + "/" + to_string(Month) + "/" + to_string(Year) + " - " +
+				to_string(Hour) + ":" + to_string(Minute) + ":" + to_string(Seconds);
+	}
+
 };
 
 

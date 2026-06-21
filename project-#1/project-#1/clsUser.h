@@ -4,6 +4,7 @@
 #include <fstream>
 #include <string>
 #include "clsString.h"
+#include "clsDate.h"
 
 using namespace std;
 
@@ -124,6 +125,18 @@ private:
 	 static clsUser _GetEmptyUserObject()
 	 {
 		 return clsUser(enMode::EmptyMode, " ", " ", " ", " ", " ", " ", 0);
+	 }
+
+	 string _PrepareLogInRecord(string Seperator = "#//#")
+	 {
+		 string LineRecord = "";
+		 
+		 LineRecord += clsDate::GetSystemTimeDataString() + Seperator;
+		 LineRecord += UserName + Seperator;
+		 LineRecord += Password + Seperator;
+		 LineRecord += to_string(Permissions);
+
+		 return LineRecord;
 	 }
 
 public:
@@ -316,6 +329,22 @@ public:
 		}
 
 		return false;
+	}
+
+	void RegisterLogIn()
+	{
+		fstream MyFile;
+
+		string DateLine = _PrepareLogInRecord();
+
+		MyFile.open("LoginRegister.txt", ios::out | ios::app);
+
+		if (MyFile.is_open())
+		{
+			MyFile << DateLine << endl;
+
+			MyFile.close();
+		}
 	}
 };
 

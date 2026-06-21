@@ -3,6 +3,7 @@
 #include "clsScreen.h"
 #include "clsInputValidate.h"
 #include "clsMainScreen.h"
+#include "clsUser.h"
 
 class clsLoginScreen :protected clsScreen
 {
@@ -13,7 +14,7 @@ private:
         bool LoginFaild = false;
         short LoginFaildCounter = 0;
         string UserName, Password;
-     
+
         do
         {
             if (LoginFaild)
@@ -40,6 +41,8 @@ private:
             LoginFaild = CurrentUser.IsEmpty();
 
         } while (LoginFaild);
+
+        CurrentUser.RegisterLogIn();
 
         clsMainScreen::ShowMainMenue();
         return true;
