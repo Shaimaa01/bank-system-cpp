@@ -38,6 +38,6 @@ F:\My Studies\course-#11\Bank\project-#1\project-#1\clsTotalBalancesScreen.h(52,
   (compiling source file '../../../../course-#11/Bank/project-#1/project-#1/project-#1.cpp')
   
 F:\My Studies\course-#11\Bank\project-#1\project-#1\clsBankClient.h(259,1): warning C4715: 'clsBankClient::Save': not all control paths return a value
-F:\My Studies\course-#11\Bank\project-#1\project-#1\clsUser.h(304,1): warning C4715: 'clsUser::Save': not all control paths return a value
 F:\My Studies\course-#11\Bank\project-#1\project-#1\clsBankClient.h(329,1): warning C4715: 'clsBankClient::Withdraw': not all control paths return a value
+F:\My Studies\course-#11\Bank\project-#1\project-#1\clsUser.h(304,1): warning C4715: 'clsUser::Save': not all control paths return a value
   project-#1.vcxproj -> F:\My Studies\course-#11\Bank\project-#1\x64\Debug\project-#1.exe
