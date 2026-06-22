@@ -191,7 +191,7 @@ public:
 
     }
 
-    static string EncyrptText(string Text, int EncyrptionKey)
+    static string EncyrptText(string Text, int EncyrptionKey = 2)
     {
         for (int i = 0; i < Text.length(); i++)
         {
@@ -201,7 +201,7 @@ public:
         return Text;
     }
 
-    static string DecrypeText(string Text, int EncyrptionKey)
+    static string DecrypetText(string Text, int EncyrptionKey = 2)
     {
         for (int i = 0; i < Text.length(); i++)
         {
