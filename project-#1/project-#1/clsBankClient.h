@@ -20,6 +20,8 @@ private:
 	float _AccountBalance;
 	bool _MarkForDelete = false;
 
+	struct stTransferLogRecord;
+
 	static clsBankClient _ConvertLinetoClientObject(string Line , string Seperator = "#//#")
 	{
 		vector <string> vClientData = clsString::Split(Line, Seperator);
@@ -158,7 +160,34 @@ private:
 		}
 	}
 
+	static stTransferLogRecord _ConvertTransferLogLineToRecord(string Line , string Seperator = "#//#")
+	{
+		vector <string> vTransferLogRecordLine = clsString::Split(Line, Seperator);
+
+		stTransferLogRecord TransferRecord;
+
+		TransferRecord.DateTime = vTransferLogRecordLine[0];
+		TransferRecord.SourceAccountNumber = vTransferLogRecordLine[1];
+		TransferRecord.DestinationAccountNumber = vTransferLogRecordLine[2];
+		TransferRecord.Amount =stof(vTransferLogRecordLine[3]);
+		TransferRecord.srcBalanceAfter = stof(vTransferLogRecordLine[4]);
+		TransferRecord.destBalanceAfter = stof(vTransferLogRecordLine[5]);
+		TransferRecord.UserName = vTransferLogRecordLine[6];
+
+		return TransferRecord;
+	}
+
 public:
+	static struct stTransferLogRecord
+	{
+		string DateTime;
+		string SourceAccountNumber;
+		string DestinationAccountNumber;
+		float Amount;
+		float srcBalanceAfter;
+		float destBalanceAfter;
+		string UserName;
+	};
 
 	clsBankClient(enMode Mode ,string FirstName , string LastName , string Email , string Phone , string AccountNumber, string PinCode, float AccountBalance) :clsPerson(FirstName , LastName , Email , Phone)
 	{
@@ -373,5 +402,30 @@ public:
 
 		return true;
 	}	
+
+	static vector <stTransferLogRecord> GetTransferLogList()
+	{
+		vector <stTransferLogRecord> vTransferLogRecord;
+
+		fstream MyFile;
+
+		MyFile.open("TransferLog.txt", ios::in);
+
+		string Line;
+		stTransferLogRecord TransferRecord;
+
+		if (MyFile.is_open())
+		{
+			while (getline(MyFile, Line))
+			{
+				TransferRecord = _ConvertTransferLogLineToRecord(Line);
+				vTransferLogRecord.push_back(TransferRecord);
+			}
+
+			MyFile.close();
+		}
+
+		return vTransferLogRecord;
+	}
 };
 

@@ -25,16 +25,24 @@ F:\My Studies\course-#11\Bank\project-#1\project-#1\clsUser.h(158,16): warning C
 F:\My Studies\course-#11\Bank\project-#1\project-#1\clsUser.h(158,16): warning C4091: 'static ': ignored on left of 'clsUser::stLoginRegisterRecord' when no variable is declared
   (compiling source file '../../../../course-#11/Bank/project-#1/project-#1/project-#1.cpp')
   
-F:\My Studies\course-#11\Bank\project-#1\project-#1\clsBankClient.h(27,151): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+F:\My Studies\course-#11\Bank\project-#1\project-#1\clsBankClient.h(181,16): warning C4240: nonstandard extension used: access to 'clsBankClient::stTransferRegisterRecord' now defined to be 'public', previously it was defined to be 'private'
+  (compiling source file '../../../../course-#11/Bank/project-#1/project-#1/project-#1.cpp')
+      F:\My Studies\course-(23,9):
+      see declaration of 'clsBankClient::stTransferRegisterRecord'
+  
+F:\My Studies\course-#11\Bank\project-#1\project-#1\clsBankClient.h(181,16): warning C4091: 'static ': ignored on left of 'clsBankClient::stTransferRegisterRecord' when no variable is declared
   (compiling source file '../../../../course-#11/Bank/project-#1/project-#1/project-#1.cpp')
   
-F:\My Studies\course-#11\Bank\project-#1\project-#1\clsBankClient.h(345,22): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+F:\My Studies\course-#11\Bank\project-#1\project-#1\clsBankClient.h(29,151): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   (compiling source file '../../../../course-#11/Bank/project-#1/project-#1/project-#1.cpp')
   
-F:\My Studies\course-#11\Bank\project-#1\project-#1\clsBankClient.h(357,23): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+F:\My Studies\course-#11\Bank\project-#1\project-#1\clsBankClient.h(374,22): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
   (compiling source file '../../../../course-#11/Bank/project-#1/project-#1/project-#1.cpp')
   
-F:\My Studies\course-#11\Bank\project-#1\project-#1\clsBankClient.h(372,24): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+F:\My Studies\course-#11\Bank\project-#1\project-#1\clsBankClient.h(386,23): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+  (compiling source file '../../../../course-#11/Bank/project-#1/project-#1/project-#1.cpp')
+  
+F:\My Studies\course-#11\Bank\project-#1\project-#1\clsBankClient.h(401,24): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   (compiling source file '../../../../course-#11/Bank/project-#1/project-#1/project-#1.cpp')
   
 F:\My Studies\course-#11\Bank\project-#1\project-#1\clsTotalBalancesScreen.h(52,82): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
@@ -43,7 +51,7 @@ F:\My Studies\course-#11\Bank\project-#1\project-#1\clsTotalBalancesScreen.h(52,
 F:\My Studies\course-#11\Bank\project-#1\project-#1\clsTransferScreen.h(47,16): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
   (compiling source file '../../../../course-#11/Bank/project-#1/project-#1/project-#1.cpp')
   
-F:\My Studies\course-#11\Bank\project-#1\project-#1\clsBankClient.h(290,1): warning C4715: 'clsBankClient::Save': not all control paths return a value
-F:\My Studies\course-#11\Bank\project-#1\project-#1\clsBankClient.h(360,1): warning C4715: 'clsBankClient::Withdraw': not all control paths return a value
+F:\My Studies\course-#11\Bank\project-#1\project-#1\clsBankClient.h(319,1): warning C4715: 'clsBankClient::Save': not all control paths return a value
+F:\My Studies\course-#11\Bank\project-#1\project-#1\clsBankClient.h(389,1): warning C4715: 'clsBankClient::Withdraw': not all control paths return a value
 F:\My Studies\course-#11\Bank\project-#1\project-#1\clsUser.h(304,1): warning C4715: 'clsUser::Save': not all control paths return a value
   project-#1.vcxproj -> F:\My Studies\course-#11\Bank\project-#1\x64\Debug\project-#1.exe
