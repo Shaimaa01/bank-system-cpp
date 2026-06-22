@@ -6,13 +6,14 @@
 #include "clsDepositScreen.h"
 #include "clsWithdrawScreen.h"
 #include "clsTotalBalancesScreen.h"
+#include "clsTransferScreen.h"
 
 using namespace std;
 
 class clsTransactionsScreen : protected clsScreen
 {
 private:
-    enum enTransactionsMenueOptions { eDeposit = 1, eWithdraw = 2, eTotalBalances = 3, eMainMenu = 4 };
+    enum enTransactionsMenueOptions { eDeposit = 1, eWithdraw = 2, eTotalBalances = 3, eTransfer = 4 , eMainMenu = 5 };
 
     static short _ReadTransactionMenuOption()
     {
@@ -43,6 +44,11 @@ private:
         clsTotalBalancesScreen::ShowTotalBalances();
     }
 
+    static void _ShowTransferScreen()
+    {
+        clsTransferScreen::ShowTransferScreen();
+    }
+
      static void _PerformTransactionMenueOpetion(enTransactionsMenueOptions TransactionMenuOption)
     {
         switch (TransactionMenuOption)
@@ -60,6 +66,11 @@ private:
         case(enTransactionsMenueOptions::eTotalBalances):
             system("cls");
             _ShowTotalBalancesScreen();
+            _GoBackToTransactionMenu();
+            break;
+        case(enTransactionsMenueOptions::eTransfer):
+            system("cls");
+            _ShowTransferScreen();
             _GoBackToTransactionMenu();
             break;
         case(enTransactionsMenueOptions::eMainMenu):
@@ -86,7 +97,8 @@ public:
         cout << setw(37) << left << "" << "\t[1] Deposit.\n";
         cout << setw(37) << left << "" << "\t[2] Withdraw.\n";
         cout << setw(37) << left << "" << "\t[3] Total Balances.\n";
-        cout << setw(37) << left << "" << "\t[4] Main Menue.\n";
+        cout << setw(37) << left << "" << "\t[4] Transfer.\n";
+        cout << setw(37) << left << "" << "\t[5] Main Menue.\n";
         cout << setw(37) << left << "" << "===========================================\n";
 
         _PerformTransactionMenueOpetion((enTransactionsMenueOptions)_ReadTransactionMenuOption());

@@ -74,6 +74,11 @@ private:
 		if (tolower(Answer) == 'y')
 			Permission += clsUser::enPermissions::pManageUsers;
 
+		cout << "\n\n Show Register Login? y/n? ";
+		cin >> Answer;
+		if (tolower(Answer) == 'y')
+			Permission += clsUser::enPermissions::pShowLoginRegister;
+
 		return Permission;
 	}
 
