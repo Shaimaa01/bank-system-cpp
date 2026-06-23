@@ -1,9 +1,10 @@
 #pragma once
 #include <iostream>
+#include "IntrefaceCommunication.h"
 
 using namespace std;
 
-class clsPerson
+class clsPerson : public IntrefaceCommunication
 {
 private:
 	string _FirstName;
@@ -71,6 +72,21 @@ public:
 	string FullName()
 	{
 		return _FirstName + " " + _LastName;
+	}
+
+	void SendEmail(string Title, string Body)
+	{
+
+	}
+
+	void SendFax(string Title, string Body)
+	{
+
+	}
+
+	void SendSMS(string Title, string Body)
+	{
+
 	}
 };
 
