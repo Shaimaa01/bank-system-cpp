@@ -164,7 +164,7 @@ public:
 		int Permissions;
 	};
 
-	enum enPermissions { eAll = -1, pListClients = 1, pAddNewClient = 2, pDeleteClient = 4, pUpdateClient = 8, pFindClient = 16, pTrancations = 32, pManageUsers = 64, pShowLoginRegister = 128 };
+	enum enPermissions { eAll = -1, pListClients = 1, pAddNewClient = 2, pDeleteClient = 4, pUpdateClient = 8, pFindClient = 16, pTrancations = 32, pManageUsers = 64, pShowLoginRegister = 128 , pCurrencyExchange = 256};
 
 	clsUser(enMode Mode, string FirstName, string LastName, string Email, string Phone, string UserName, string Password, int Permissions)
 		:clsPerson(FirstName, LastName, Email, Phone)
