@@ -43,14 +43,14 @@ public:
 
 		if (Answer == 1)
 		{
-			cout << "\nPlease Enter CurrencyCode: ";
+			cout << "\nPlease Enter Currency Code: ";
 			string CurrencyCode = clsInputValidate::ReadString();
 			clsCurrency Currency = clsCurrency::FindByCode(CurrencyCode);
 			_ShowResults(Currency);
 		}
 		else
 		{
-			cout << "\nPlease Enter CurrencyName: ";
+			cout << "\nPlease Enter Country Name: ";
 			string CurrencyName = clsInputValidate::ReadString();
 			clsCurrency Currency = clsCurrency::FindByCountry(CurrencyName);
 			_ShowResults(Currency);

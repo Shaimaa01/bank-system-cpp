@@ -202,9 +202,9 @@ public:
 		return _GetEmptyCurrencyObject();
 	}
 
-	static bool IsCurrencyExist(string CurrencyCode)
+	static bool  IsCurrencyExist(string CurrencyCode)
 	{
-		clsCurrency C1 = FindByCountry(CurrencyCode);
+		clsCurrency C1 = FindByCode(CurrencyCode);
 
 		return !C1.IsEmpty();
 	}
