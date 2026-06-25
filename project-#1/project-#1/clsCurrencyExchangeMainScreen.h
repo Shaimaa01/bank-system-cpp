@@ -4,6 +4,7 @@
 #include "clsUser.h"
 #include "clsInputValidate.h"
 #include "clsCurrenciesListScreen.h"
+#include "clsFindCurrencyScreen.h"
 
 using namespace std;
 
@@ -26,7 +27,7 @@ private:
 
 	static void _ShowFindCurrencyScreen()
 	{
-		cout << "hi 2";
+		clsFindCurrencyScreen::ShowFindCurrencyScreen();
 	}
 
 	static void _ShowCurrencyCalculatorScreen()
