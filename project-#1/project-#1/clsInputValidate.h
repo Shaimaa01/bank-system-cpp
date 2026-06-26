@@ -7,39 +7,24 @@ using namespace std;
 class clsInputValidate
 {
 public:
-
-	static bool IsNumberBetween(short Number, short From, short To)
-	{
+	 template <typename T>
+	 static bool IsNumberBetween(T Number, T From, T To)
+	 {
 		return Number >= From && Number <= To;
-	}
-
-	static bool IsNumberBetween(int Number, int From, int To)
-	{
-		return Number >= From && Number <= To;
-	}
-
-	static bool IsNumberBetween(double Number, double From, double To)
-	{
-		return Number >= From && Number <= To;
-	}
-
-	static bool IsNumberBetween(float Number, float From, float To)
-	{
-		return Number >= From && Number <= To;
-	}
+	 }
 
 	static bool IsDateBetween(clsDate Date, clsDate From, clsDate To)
 	{
 		// Date >= From && Date <= To
-		if (clsDate::IsDate1AfterDate2(Date, From) || clsDate::IsDate1EqualDate2(Date, From)
-			&& clsDate::IsDate1BeforeDate2(Date, To) || clsDate::IsDate1EqualDate2(Date, To))
+		if ((clsDate::IsDate1AfterDate2(Date, From) || clsDate::IsDate1EqualDate2(Date, From))
+			&& (clsDate::IsDate1BeforeDate2(Date, To) || clsDate::IsDate1EqualDate2(Date, To)))
 		{
 			return true;
 		}
 
 		// Date <=To && Date >= From 
-		if (clsDate::IsDate1AfterDate2(Date, To) || clsDate::IsDate1EqualDate2(Date, To)
-			&& clsDate::IsDate1BeforeDate2(Date, From) || clsDate::IsDate1EqualDate2(Date, From))
+		if ((clsDate::IsDate1AfterDate2(Date, To) || clsDate::IsDate1EqualDate2(Date, To))
+			&& (clsDate::IsDate1BeforeDate2(Date, From) || clsDate::IsDate1EqualDate2(Date, From)))
 		{
 			return true;
 		}
@@ -47,9 +32,10 @@ public:
 		return false;
 	}
 
-	static int ReadIntNumber(string ErrorMessage = "Invalid Number , Enter again\n")
+	template <typename T>
+	static T ReadNumber(string ErrorMessage = "Invalid Number , Enter again\n")
 	{
-		int Number;
+		T Number;
 
 		while (!(cin >> Number))
 		{
@@ -61,68 +47,15 @@ public:
 		return Number;
 	}
 
-	static int ReadIntNumberBetween(int From, int To, string ErrorMessage = "Number is not within range , Enter again\n")
+	template <typename T>
+	static  T ReadNumberBetween(T From, T To, string ErrorMessage = "Number is not within range , Enter again\n")
 	{
-		int Number = ReadIntNumber();
+		T Number = ReadNumber<T>();
 
 		while (!IsNumberBetween(Number, From, To))
 		{
 			cout << ErrorMessage;
-			Number = ReadIntNumber();
-		}
-
-		return Number;
-	}
-
-	static short ReadshortNumberBetween(short From, short To, string ErrorMessage = "Number is not within range , Enter again\n")
-	{
-		short Number = ReadIntNumber();
-
-		while (!IsNumberBetween(Number, From, To))
-		{
-			cout << ErrorMessage;
-			Number = ReadIntNumber();
-		}
-
-		return Number;
-	}
-
-	static float ReadFloatNumber(string ErrorMessage = "Invalid Number , Enter again\n")
-	{
-		float Number;
-
-		while (!(cin >> Number))
-		{
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cout << ErrorMessage;
-		}
-
-		return Number;
-	}
-
-	static double ReadDblNumber(string ErrorMessage = "Invalid Number , Enter again\n")
-	{
-		double Number;
-
-		while (!(cin >> Number))
-		{
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cout << ErrorMessage;
-		}
-
-		return Number;
-	}
-
-	static double ReadDblNumberBetween(double From, double To, string ErrorMessage)
-	{
-		double Number = ReadDblNumber();
-
-		while (!IsNumberBetween(Number, From, To))
-		{
-			cout << ErrorMessage;
-			Number = ReadDblNumber();
+			Number = ReadNumber<T>();
 		}
 
 		return Number;

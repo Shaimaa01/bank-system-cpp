@@ -52,6 +52,6 @@ F:\My Studies\course-#11\Bank\project-#1\project-#1\clsTransferScreen.h(47,16): 
   (compiling source file '../../../../course-#11/Bank/project-#1/project-#1/project-#1.cpp')
   
 F:\My Studies\course-#11\Bank\project-#1\project-#1\clsBankClient.h(319,1): warning C4715: 'clsBankClient::Save': not all control paths return a value
-F:\My Studies\course-#11\Bank\project-#1\project-#1\clsBankClient.h(389,1): warning C4715: 'clsBankClient::Withdraw': not all control paths return a value
 F:\My Studies\course-#11\Bank\project-#1\project-#1\clsUser.h(305,1): warning C4715: 'clsUser::Save': not all control paths return a value
+F:\My Studies\course-#11\Bank\project-#1\project-#1\clsBankClient.h(389,1): warning C4715: 'clsBankClient::Withdraw': not all control paths return a value
   project-#1.vcxproj -> F:\My Studies\course-#11\Bank\project-#1\x64\Debug\project-#1.exe
