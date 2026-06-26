@@ -59,8 +59,7 @@ public:
 		{
 			cout << "\nUpdate Currency Rate:\n";
 			cout << "________________________\n";
-			cout << "\nEnter New Rate: ";
-	
+
 			Currency.UpdateRate(_ReadRate());
 
 			cout << "\nCurrency Rate Updated Successfully :-)\n";
